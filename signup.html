@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scrap Management - Signup</title>
+</head>
+<body>
+  <h1>Scrap Management Signup</h1>
+  <form action="signup.php" method="POST">
+    <label for="name">Name:</label><br>
+    <input type="text" name="name" required><br>
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" name="password" required><br>
+    <label for="role">Role:</label><br>
+    <select name="role" required>
+      <option value="vendor">Vendor</option>
+      <option value="buyer">Buyer</option>
+      <option value="employee">Employee</option>
+    </select><br><br>
+    <!-- Add fields for the specific attributes of each role -->
+    <div id="vendor-attributes" style="display:none">
+      <label for="vendor-address">Address:</label><br>
+      <input type="text" name="vendor-address"><br>
+      <label for="vendor-phone">Phone:</label><br>
+      <input type="text" name="vendor-phone"><br>
+    </div>
+    <div id="buyer-attributes" style="display:none">
+      <label for="buyer-address">Address:</label><br>
+      <input type="text" name="buyer-address"><br>
+      <label for="buyer-phone">Phone:</label><br>
+      <input type="text" name="buyer-phone"><br>
+    </div>
+    <div id="employee-attributes" style="display:none">
+      <label for="employee-role">Job Title:</label><br>
+      <input type="text" name="employee-role"><br>
+      <label for="employee-phone">Phone:</label><br>
+      <input type="text" name="employee-phone"><br>
+    </div>
+    <input type="submit" value="Signup">
+  </form> 
+  <script>
+    // Show the appropriate attributes fields when the role is selected
+    document.querySelector("select[name='role']").addEventListener("change", function() {
+      document.querySelectorAll("div[id$='-attributes']").forEach(function(el) {
+        el.style.display = "none";
+      });
+      document.querySelector("div#" + this.value + "-attributes").style.display = "block";
+    });
+  </script>
+</body>
+</html>

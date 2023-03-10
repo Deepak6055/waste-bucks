@@ -1,0 +1,31 @@
+<?php while ($scrap = $scrap_result->fetch_assoc()): ?>
+  <tr>
+    <td><?php echo $scrap["type"]; ?></td>
+    <td><?php echo $scrap["quantity"]; ?></td>
+    <td><?php echo $scrap["price"]; ?></td>
+    <td><?php echo $scrap["other_details"]; ?></td>
+    <td>
+    <form action="add_scrap.php" method="POST">
+  <label for="type">Type:</label><br>
+  <input type="text" name="type" id="type"><br>
+  <label for="quantity">Quantity:</label><br>
+  <input type="text" name="quantity" id="quantity"><br>
+  <label for="price">Price:</label><br>
+  <input type="text" name="price" id="price"><br>
+  <label for="other_details">Other Details:</label><br>
+  <textarea name="other_details" id="other_details"></textarea><br>
+  <input type="submit" value="Add Scrap">
+</form>
+<form action="update_scrap.php" method="POST">
+  <input type="hidden" name="scrap_id" value="<?php echo $scrap["scrap_id"]; ?>">
+  <label for="type">Type:</label><br>
+  <input type="text" name="type" id="type" value="<?php echo $scrap["type"]; ?>"><br>
+  <label for="quantity">Quantity:</label><br>
+  <input type="text" name="quantity" id="quantity" value="<?php echo $scrap["quantity"]; ?>"><br>
+  <label for="price">Price:</label><br>
+  <input type="text" name="price" id="price" value="<?php echo $scrap["price"]; ?>"><br>
+  <label for="other_details">Other Details:</label><br>
+  <textarea name="other_details" id="other_details"><?php echo $scrap["other_details"]; ?></textarea><br>
+  <input type="submit" value="Update Scrap">
+</form>
+<?php endwhile; ?>
